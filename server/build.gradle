@@ -1,0 +1,33 @@
+plugins {
+    id('org.springframework.boot') version('2.2.1.RELEASE')
+    id('io.spring.dependency-management') version('1.0.10.RELEASE')
+    id 'java'
+}
+
+group 'gdimitriu.restServer'
+version '1.0-SNAPSHOT'
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility =JavaVersion.VERSION_13
+    targetCompatibility = JavaVersion.VERSION_13
+}
+
+repositories {
+    mavenCentral()
+    maven {url = 'https://repo.spring.io/milestone'}
+    maven {url = 'https://repo.spring.io/snapshot'}
+}
+java {
+    modularity.inferModulePath = true
+}
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter:2.2.11.RELEASE')
+    implementation('org.springframework.boot:spring-boot-starter-web:2.4.0')
+    implementation('org.springframework.boot:spring-boot-starter-tomcat:2.4.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+group 'gdimitriu.restServer'
+version '1.0-SNAPSHOT'
+
+tasks.withType(JavaCompile) {
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+test {
+    useJUnitPlatform()
+}
