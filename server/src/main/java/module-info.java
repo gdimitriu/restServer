@@ -8,4 +8,8 @@ module restServer.server {
     requires spring.context;
     requires spring.webmvc;
     requires java.management;
+    requires org.slf4j;
+    requires spring.security.core;
+    requires spring.security.web;
+    requires spring.security.config;
 }
