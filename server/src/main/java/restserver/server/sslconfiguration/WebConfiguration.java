@@ -30,6 +30,7 @@ import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -44,7 +45,10 @@ import java.time.Duration;
 import java.util.List;
 
 @Configuration
-@PropertySource("classpath:/tomcat.https.properties")
+@PropertySources({
+        @PropertySource("classpath:/tomcat.https.properties"),
+        @PropertySource(value = "file:${tomcat.properties}", ignoreResourceNotFound = true)
+})
 @EnableConfigurationProperties(WebConfiguration.TomcatSslConnectorsProperties.class)
 public class WebConfiguration implements WebMvcConfigurer {
 
