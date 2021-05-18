@@ -52,6 +52,37 @@ public class FormsController {
         return "success";
     }
 
+    @RequestMapping(value = "/form1_2", method = RequestMethod.POST, consumes = {"multipart/form-data"}, produces = {"application/text"})
+    public String postForms(@RequestParam("key") String key,
+                            @RequestParam("actor") String actor,
+                            @RequestParam("file1")MultipartFile dataFile1,
+                            @RequestParam("file2")MultipartFile dataFile2) {
+
+        try {
+            log.info("key=" + key);
+            log.info("actor=" + actor);
+            log.info("file1=" + new String(dataFile1.getBytes()));
+            log.info("file2=" + new String(dataFile2.getBytes()));
+        } catch (IOException e) {
+            return "fail";
+        }
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/form2", method = RequestMethod.POST, consumes = {"multipart/form-data"}, produces = {"application/text"})
+    public String postFormsString(@RequestParam("key") String key,
+                            @RequestParam("actor") String actor,
+                            @RequestParam("data")String dataFile) {
+
+        log.info("key=" + key);
+        log.info("actor=" + actor);
+        log.info("data=" + dataFile);
+
+        return "success";
+    }
+
+
     @RequestMapping(value = "/formSecure", method = RequestMethod.POST, consumes = {"multipart/form-data"}, produces = {"application/text"})
     public String postFormsSecure(@RequestParam("key") String key,
                                     @RequestParam("actor") String actor,
