@@ -32,6 +32,9 @@ dependencies {
     implementation('org.apache.logging.log4j:log4j-api:2.4')
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.8'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.2.11.RELEASE'
+
 }
 
 test {

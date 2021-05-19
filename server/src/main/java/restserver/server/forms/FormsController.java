@@ -21,10 +21,8 @@ package restserver.server.forms;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -61,6 +59,21 @@ public class FormsController {
             log.info("actor=" + actor);
             log.info("file1=" + new String(dataFile1.getBytes()));
             log.info("file2=" + new String(dataFile2.getBytes()));
+        } catch (IOException e) {
+            return "fail";
+        }
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/form2_2", method = RequestMethod.POST, consumes = {"multipart/form-data"}, produces = {"application/text"})
+    public String postFormsBody(@Validated(MultipartFormDataBody.class) @ModelAttribute MultipartFormDataBody data) {
+
+        try {
+            log.info("key=" + data.getKey());
+            log.info("actor=" + data.getActor());
+            log.info("file1=" + new String(data.getFile1().getBytes()));
+            log.info("file2=" + new String(data.getFile2().getBytes()));
         } catch (IOException e) {
             return "fail";
         }
