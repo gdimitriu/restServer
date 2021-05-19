@@ -16,3 +16,9 @@ rc=`curl -G localhost:8080/entry/secured -u user:user 2>/dev/null`
 if [ "$rc" != "MySecuredInfo" ]; then
   echo "did not succeded"
 fi
+
+rc=`curl -H "Content-Type:multipart/form-data" -F key=a1 -F actor=a2 -F file1=@./test.dat -F file2=@./test.dat localhost:8080/forms/form1_2 -u user:user 2>/dev/null`
+
+if [ "$rc" != "success" ]; then
+  echo "did not succeded"
+fi
