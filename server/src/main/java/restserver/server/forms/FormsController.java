@@ -21,11 +21,9 @@ package restserver.server.forms;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,9 +35,9 @@ public class FormsController {
     private static final Logger log = LoggerFactory.getLogger(FormsController.class);
 
     @RequestMapping(value = "/form1", method = RequestMethod.POST, consumes = {"multipart/form-data"}, produces = {"application/text"})
-    public String postForms(@RequestParam("key") String key,
-                                    @RequestParam("actor") String actor,
-                                    @RequestParam("data")MultipartFile dataFile) {
+    public String postForms(@RequestPart("key") String key,
+                                    @RequestPart("actor") String actor,
+                                    @RequestPart("data")MultipartFile dataFile) {
 
         try {
             log.info("key=" + key);
@@ -53,10 +51,10 @@ public class FormsController {
     }
 
     @RequestMapping(value = "/form1_2", method = RequestMethod.POST, consumes = {"multipart/form-data"}, produces = {"application/text"})
-    public String postForms(@RequestParam("key") String key,
-                            @RequestParam("actor") String actor,
-                            @RequestParam("file1")MultipartFile dataFile1,
-                            @RequestParam("file2")MultipartFile dataFile2) {
+    public String postForms(@RequestPart("key") String key,
+                            @RequestPart("actor") String actor,
+                            @RequestPart("file1")MultipartFile dataFile1,
+                            @RequestPart("file2")MultipartFile dataFile2) {
 
         try {
             log.info("key=" + key);
@@ -71,9 +69,9 @@ public class FormsController {
     }
 
     @RequestMapping(value = "/form2", method = RequestMethod.POST, consumes = {"multipart/form-data"}, produces = {"application/text"})
-    public String postFormsString(@RequestParam("key") String key,
-                            @RequestParam("actor") String actor,
-                            @RequestParam("data")String dataFile) {
+    public String postFormsString(@RequestPart("key") String key,
+                            @RequestPart("actor") String actor,
+                            @RequestPart("data")String dataFile) {
 
         log.info("key=" + key);
         log.info("actor=" + actor);
@@ -84,9 +82,9 @@ public class FormsController {
 
 
     @RequestMapping(value = "/formSecure", method = RequestMethod.POST, consumes = {"multipart/form-data"}, produces = {"application/text"})
-    public String postFormsSecure(@RequestParam("key") String key,
-                                    @RequestParam("actor") String actor,
-                                    @RequestParam("data")MultipartFile dataFile) {
+    public String postFormsSecure(@RequestPart("key") String key,
+                                    @RequestPart("actor") String actor,
+                                    @RequestPart("data")MultipartFile dataFile) {
 
         try {
             log.info("key=" + key);
