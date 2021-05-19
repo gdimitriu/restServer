@@ -50,6 +50,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .mvcMatchers("/swagger-ui.html").permitAll()
                 .mvcMatchers("/entry/info").permitAll()
                 .mvcMatchers("/forms/form1").permitAll()
                 .anyRequest().authenticated()
