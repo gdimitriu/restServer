@@ -1,6 +1,13 @@
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
+        classpath("se.transmode.gradle:gradle-docker:1.2")
+    }
+}
 plugins {
     id('org.springframework.boot') version('2.2.1.RELEASE')
     id('io.spring.dependency-management') version('1.0.10.RELEASE')
+    id 'application'
     id 'java'
 }
 
@@ -11,7 +18,6 @@ tasks.withType(JavaCompile) {
     sourceCompatibility =JavaVersion.VERSION_13
     targetCompatibility = JavaVersion.VERSION_13
 }
-
 repositories {
     mavenCentral()
     maven {url = 'https://repo.spring.io/milestone'}

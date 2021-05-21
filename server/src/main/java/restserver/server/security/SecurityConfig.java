@@ -21,6 +21,7 @@ package restserver.server.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -50,9 +51,12 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .mvcMatchers("/swagger-ui.html").permitAll()
+                .regexMatchers(HttpMethod.GET, "/swagger-[\\s\\S]*").permitAll()
+                .regexMatchers(HttpMethod.GET,"/v3/api-docs[\\s\\S]*").permitAll()
                 .mvcMatchers("/entry/info").permitAll()
                 .mvcMatchers("/forms/form1").permitAll()
+                .and()
+                .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
