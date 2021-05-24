@@ -19,3 +19,15 @@ This need openJDK 13.
     ### run with security
 
     ./runSecure.sh
+
+## OpenAPI si available at
+
+http://localhost:8080/swagger-ui.html
+
+or
+
+https://localhost:8081/swagger-ui.html
+
+## Dockerfile is available into the docker directory
+
+This can be retrieved using pull gdimitriu/restserver:latest
