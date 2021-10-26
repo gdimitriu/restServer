@@ -31,4 +31,8 @@ module restServer.server {
     requires spring.security.core;
     requires spring.security.web;
     requires spring.security.config;
+    requires com.fasterxml.jackson.annotation;
+    requires com.fasterxml.jackson.dataformat.xml;
+    requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.core;
 }
