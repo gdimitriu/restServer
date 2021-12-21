@@ -1,0 +1,19 @@
+server:
+  port: 8090
+spring:
+  security:
+    openam:
+      client:
+        clientId: test
+        clientSecret: test
+        accessTokenUri: http://ubuntu:8080/openam/oauth2/test/access_token
+        userAuthorizationUri: http://ubuntu:8080/openam/oauth2/test/authorize
+        tokenName: access_token
+        authenticationScheme: query
+        clientAuthenticationScheme: form
+        scope: profile
+      resource:
+        userInfoUri: http://ubuntu:8080/openam/oauth2/test/userinfo
+logging:
+  level:
+    org.springframework.security: DEBUG
